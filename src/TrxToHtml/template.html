@@ -1,9 +1,9 @@
 ﻿<!DOCTYPE html>
-
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title>Unit Test Results</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Results Report</title>
 </head>
 {{
     total = 0
@@ -44,39 +44,47 @@
 
     <h2>All Results</h2>
     <table class="all-results" cellspacing="0" cellpadding="0">
-        {{~ for run in TestRuns ~}}
-        {{~ for result in run.Results ~}}
-        <tr class="result">
-            <td>
-                {{~ if result.outcome == 'Failed' ~}}
-                <span class="failed">✘</span>
-                {{~ else if result.outcome == 'Passed' ~}}
-                <span class="passed">✔</span>
-                {{~ else ~}}
-                <span>-</span>
-                {{~ end ~}}
-            </td>
-            <td>{{ result.outcome }}</td>
-            <td>{{ result.testName | html.escape }}</td>
-            <td class="duration">{{ 
-                parts = result.duration | string.split '.'
-                if parts.size > 1
-                    seconds = parts[0] | string.split ':' | array.last
-                    microseconds = parts[1]
-                    ((seconds | string.to_int) * 1000 + (microseconds | string.to_int) / 1000) | math.round
-                else
-                    result.duration | string.to_int
-                end
-            }}ms</td>
-        </tr>
-        {{~ end ~}}
-        {{~ end ~}}
+        <thead>
+            <tr>
+                <th>Status</th>
+                <th>Test Name</th>
+                <th>Duration</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{~ for run in TestRuns ~}}
+            {{~ for result in run.Results ~}}
+            <tr class="result">
+                <td>
+                    {{~ if result.outcome == 'Failed' ~}}
+                    <span class="failed">✘</span>
+                    {{~ else if result.outcome == 'Passed' ~}}
+                    <span class="passed">✔</span>
+                    {{~ else ~}}
+                    <span>-</span>
+                    {{~ end ~}}
+                </td>
+                <td>{{ result.testName | html.escape }}</td>
+                <td class="duration">{{ 
+                    parts = result.duration | string.split '.'
+                    if parts.size > 1
+                        seconds = parts[0] | string.split ':' | array.last
+                        microseconds = parts[1]
+                        ((seconds | string.to_int) * 1000 + (microseconds | string.to_int) / 1000) | math.round
+                    else
+                        result.duration | string.to_int
+                    end
+                }}ms</td>
+            </tr>
+            {{~ end ~}}
+            {{~ end ~}}
+        </tbody>
     </table>
 
     <style>
         /* global */
         body {
-            font-family: Calibri, Verdana, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
             background-color: white;
             color: black;
             padding: 0;
@@ -112,35 +120,71 @@
             margin-left: 20px;
         }
 
-            .failed-results .result {
-                background-color: #e6eff7;
-                margin-bottom: 10px;
-                padding: 5px;
-            }
+        .failed-results .result {
+            background-color: #e6eff7;
+            margin-bottom: 10px;
+            padding: 5px;
+        }
 
-                .failed-results .result .testname {
-                    font-weight: bold;
-                }
+        .failed-results .result .testname {
+            font-weight: bold;
+        }
 
         /* all */
         table.all-results {
             width: 100%;
             padding-left: 20px;
-            border-collapse: separate;
-            border-spacing: 0 5px;
+            border-collapse: collapse;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            overflow: hidden;
         }
 
-            table.all-results tr.result {
-                background-color: #e6eff7;
+        table.all-results th {
+            background-color: #f8f9fa;
+            padding: 8px;
+            text-align: left;
+            font-weight: bold;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        table.all-results tr.result {
+            background-color: #e6eff7;
+        }
+
+        table.all-results tr.result:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        table.all-results tr.result td {
+            padding: 8px;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        table.all-results tr:last-child td {
+            border-bottom: none;
+        }
+
+        table.all-results tr.result td.duration {
+            text-align: right;
+        }
+
+        /* responsive */
+        @media (max-width: 768px) {
+            body {
+                margin: 5px 10px;
             }
 
-                table.all-results tr.result td {
-                    padding: 5px;
-                }
+            table.all-results {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
 
-                    table.all-results tr.result td.duration {
-                        text-align: right;
-                    }
+            .summary {
+                font-size: large;
+            }
+        }
     </style>
 </body>
 </html>
