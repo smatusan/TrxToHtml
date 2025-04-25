@@ -4,12 +4,12 @@
     <TargetFramework>net9.0</TargetFramework>
     <CodeAnalysisRuleSet>..\stylecop.ruleset</CodeAnalysisRuleSet>
     <PackAsTool>true</PackAsTool>
-    <ToolCommandName>trx-to-html</ToolCommandName>
+    <ToolCommandName>trx-to-html-net9</ToolCommandName>
     <Authors>Samhammer AG</Authors>
     <Company>Samhammer AG</Company>
     <RepositoryUrl>https://github.com/SamhammerAG/TrxToHtml</RepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
     <PackageId>Samhammer.net9.TrxToHtml</PackageId>
   </PropertyGroup>
   <ItemGroup>
