@@ -9,7 +9,7 @@
     <Company>Samhammer AG</Company>
     <RepositoryUrl>https://github.com/SamhammerAG/TrxToHtml</RepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <PackageId>Samhammer.net9.TrxToHtml</PackageId>
   </PropertyGroup>
   <ItemGroup>
@@ -19,9 +19,9 @@
     <EmbeddedResource Include="Template.html" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="CommandLineParser" Version="2.8.0" />
-    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="1.1.0" />
-    <PackageReference Include="Scriban" Version="2.1.4" />
+    <PackageReference Include="CommandLineParser" Version="2.9.1" />
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="9.0.4" />
+    <PackageReference Include="Scriban" Version="6.2.1" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
