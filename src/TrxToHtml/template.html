@@ -59,10 +59,13 @@
             <td>{{ result.outcome }}</td>
             <td>{{ result.testName | html.escape }}</td>
             <td class="duration">{{ 
-                if result.duration | string.starts_with '00:'
-                    result.duration | timespan.parse | math.ceil
+                parts = result.duration | string.split '.'
+                if parts.size > 1
+                    seconds = parts[0] | string.split ':' | array.last
+                    microseconds = parts[1]
+                    ((seconds | string.to_int) * 1000 + (microseconds | string.to_int) / 1000) | math.round
                 else
-                    result.duration | math.ceil
+                    result.duration | string.to_int
                 end
             }}ms</td>
         </tr>
