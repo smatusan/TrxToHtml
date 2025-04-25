@@ -58,7 +58,13 @@
             </td>
             <td>{{ result.outcome }}</td>
             <td>{{ result.testName | html.escape }}</td>
-            <td class="duration">{{ result.duration | (timespan.parse).TotalMilliseconds | math.ceil }}ms</td>
+            <td class="duration">{{ 
+                if result.duration | string.starts_with '00:'
+                    result.duration | timespan.parse | math.ceil
+                else
+                    result.duration | math.ceil
+                end
+            }}ms</td>
         </tr>
         {{~ end ~}}
         {{~ end ~}}
