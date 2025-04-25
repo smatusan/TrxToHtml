@@ -7,16 +7,20 @@
     <ToolCommandName>trx-to-html-net9</ToolCommandName>
     <Authors>Samhammer AG</Authors>
     <Company>Samhammer AG</Company>
-    <RepositoryUrl>https://github.com/SamhammerAG/TrxToHtml</RepositoryUrl>
+    <RepositoryUrl>https://github.com/smatusan/TrxToHtml</RepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Version>1.0.6</Version>
+    <Version>1.0.7</Version>
     <PackageId>Samhammer.net9.TrxToHtml</PackageId>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
   <ItemGroup>
     <AdditionalFiles Include="..\stylecop.json" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Template.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="CommandLineParser" Version="2.9.1" />
