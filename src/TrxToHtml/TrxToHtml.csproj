@@ -9,7 +9,7 @@
     <Company>Samhammer AG</Company>
     <RepositoryUrl>https://github.com/smatusan/TrxToHtml</RepositoryUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <Version>1.0.7</Version>
+    <Version>1.0.8</Version>
     <PackageId>Samhammer.net9.TrxToHtml</PackageId>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
